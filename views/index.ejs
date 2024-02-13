@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaughLoom</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="nav">
+        <!-- <img src="public/img.jpg"> -->
+        <h1>Laugh Loom</h1>
+        <h3>Get ready to chuckle! Welcome to the Laugh Loom, where laughter knows no bounds. Discover endless amusement with a simple click.<br> Unwind, relax, and let the giggles flow freely. Your daily dose of humor starts here!</h3>
+
+    </section>
+    <section id="main-content">
+        <div class="res-card">
+            <div class="card">
+            <% if(locals.jokeres){ %>
+              <%  if(jokeres.length<2){ %>
+                    <%= jokeres[0] %>
+               <% }else{ %>
+              <%  for(var i=0; i<jokeres.length;i++){ %>
+               <li><%= jokeres[i] %></li> 
+               <% } %>
+             <% } %>
+           <% }else{%>
+          <p>Choose your mood and let us tickle your funny bone with a refreshing joke tailored just for you!</p>
+          <% } %>
+            </div>
+            <div class="sform">
+        <form method="post" action="/getjoke">
+            <label>Number of jokes</label>
+            <input type="number" name="amount"><br>
+            <label>Select joke type</label>
+            <select name="type" id="type" class="custom-select">
+                <option value="single">Single</option>
+                <option value="twopart">Twopart</option>
+            </select><br>
+            <label>Select language</label>
+            <select name="language" id="language" class="custom-select">
+                <option value="en">English</option>
+                <option value="cs">Czech</option>
+                <option value="de">German</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="pt">Portuguese</option>
+            </select><br>
+            <label>Select category</label>
+            <select name="category" id="category" class="custom-select">
+                <option value="Any">Any</option>
+                <option value="Misc">Miscellaneous</option>
+                <option value="Programming">Programming</option>
+                <option value="Dark">Dark</option>
+                <option value="Pun">Pun</option>
+                <option value="Spooky">Spooky</option>
+                <option value="Christmas">Christmas</option>
+            </select><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    </div>
+    </section>
+    
+    
+</body>
+</html>
