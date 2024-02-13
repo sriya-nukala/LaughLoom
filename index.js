@@ -26,6 +26,11 @@ app.post("/getjoke",async(req,res)=>{
     try{
         const result= await axios.get("https://v2.jokeapi.dev/joke/"+category+"?amount="+amount+"&lang="+langcode+"&type="+type);
         var jokegen=[];
+        if(result.data.error===true){
+            jokegen[0]="No matching joke found";
+            res.render("index.ejs",{jokeres:jokegen});
+        }
+        else{
         if(amount>1){
             var jokearray=result.data.jokes;
             if(type==="twopart"){
@@ -49,6 +54,7 @@ app.post("/getjoke",async(req,res)=>{
         }
         res.render("index.ejs",{jokeres:jokegen});
         } 
+    }
     }catch(error){
         console.log(error);
         res.status(500);
